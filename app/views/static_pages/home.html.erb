@@ -2,3 +2,21 @@
   <h1>Hello</h1>
   <button type="button" name="button" class="btn btn-info">Welcome to the site</button>
 </div>
+
+
+<% @books.each do |book| %>
+  <hr>
+  <p>
+    <%= book.title %>
+  </p>
+  <p>
+    Your price: <%= book.price %>
+  </p>
+  <p>
+    RRP: <%= book.recommended_retail_price %>
+  </p>
+  <p>
+    <%= link_to 'View details', book, target: '_blank' %>
+  </p>
+  <hr>
+<% end %>
