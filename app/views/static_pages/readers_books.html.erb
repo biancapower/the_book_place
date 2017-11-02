@@ -1,6 +1,6 @@
 <!-- displays all book listings for a specific user -->
 
-<!-- start by displaying all books listed by current_user -->
+<!-- start by displaying all books listed by CURRENT USER -->
 <% @books.each do |book| %>
   <% if book.user.id == current_user.id %>
     <hr>
@@ -19,3 +19,4 @@
     <hr>
   <% end %>
 <% end %>
+<!-- FIXME: when click on button on user's profile, view only the books listed by THAT user -->

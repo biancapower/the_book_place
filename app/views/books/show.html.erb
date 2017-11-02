@@ -6,6 +6,11 @@
 </p> -->
 
 <p>
+  <strong>Seller:</strong>
+  <%= link_to @book.user.profile.username,  @book.user.profile, target: '_blank' %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @book.title %>
 </p>
