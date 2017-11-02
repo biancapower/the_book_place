@@ -35,5 +35,28 @@
   <%= @profile.postcode %>
 </p>
 
+<!-- ################################## -->
+<h3><%= @profile.username %>'s books</h3>
+
+
+<% @books.each do |book| %>
+  <% if book.user.id == @profile.user.id %>
+    <hr>
+    <p>
+      <%= book.title %>
+    </p>
+    <p>
+      Your price: <%= book.price %>
+    </p>
+    <p>
+      RRP: <%= book.recommended_retail_price %>
+    </p>
+    <p>
+      <%= link_to 'View details', book, target: '_blank' %>
+    </p>
+    <hr>
+  <% end %>
+<% end %>
+
 <%= link_to 'Edit', edit_profile_path(@profile) %> |
 <%= link_to 'Back', profiles_path %>

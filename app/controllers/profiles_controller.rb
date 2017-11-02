@@ -10,6 +10,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    @books = Book.all
   end
 
   # GET /profiles/new
@@ -23,6 +24,7 @@ class ProfilesController < ApplicationController
 
   def current
     @profile = current_user.profile
+    @books = Book.all
     if @profile.nil?
       new
       render 'new'

@@ -1,10 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<!-- <p>
-  <strong>User:</strong>
-  <%#= @book.user %>
-</p> -->
-
 <p>
   <strong>Seller:</strong>
   <%= link_to @book.user.profile.username,  @book.user.profile, target: '_blank' %>
