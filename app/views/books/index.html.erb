@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <!-- <th>User</th> -->
+      <th>User</th>
       <th>Title</th>
       <th>Description</th>
       <th>Price</th>
@@ -26,6 +26,7 @@
     <% @books.each do |book| %>
       <tr>
         <!-- <td><%= book.user %></td> -->
+        <td><%= book.user.id %></td>
         <td><%= book.title %></td>
         <td><%= book.description %></td>
         <td><%= book.price %></td>

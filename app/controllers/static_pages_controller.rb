@@ -4,5 +4,9 @@ class StaticPagesController < ApplicationController
     @books = Book.all
   end
 
+  def readers_books
+    @books = Book.all
+  end
+
 
 end

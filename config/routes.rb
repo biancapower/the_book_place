@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   get 'profile', to: 'profiles#current'
 
+  get 'readers_books', to: 'static_pages#readers_books'
+
 end

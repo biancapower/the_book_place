@@ -1,5 +1,8 @@
-<div class="container">
-  <% @books.each do |book| %>
+<!-- displays all book listings for a specific user -->
+
+<!-- start by displaying all books listed by current_user -->
+<% @books.each do |book| %>
+  <% if book.user.id == current_user.id %>
     <hr>
     <p>
       <%= book.title %>
@@ -15,4 +18,4 @@
     </p>
     <hr>
   <% end %>
-</div>
+<% end %>
