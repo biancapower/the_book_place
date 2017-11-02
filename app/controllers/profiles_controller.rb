@@ -21,6 +21,16 @@ class ProfilesController < ApplicationController
   def edit
   end
 
+  def current
+    @profile = current_user.profile
+    if @profile.nil?
+      new
+      render 'new'
+    else
+      render 'show'
+    end
+  end
+
   # POST /profiles
   # POST /profiles.json
   def create

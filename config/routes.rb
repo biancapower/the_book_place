@@ -5,6 +5,6 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  get 'profile/new', to: 'profiles#new'
+  get 'profile', to: 'profiles#current'
 
 end
