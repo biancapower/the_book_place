@@ -10,20 +10,20 @@
 <div class="container">
   <% @books.each do |book| %>
     <hr>
-    <p>
+    <h3>
       <%= book.title %>
+    </h3>
+    <h5>
+      <i><%= book.author %></i>
+    </h5>
+    <p>
+      <strong>Your price:</strong> <%= book.price %>
     </p>
     <p>
-      <%= book.author %>
+      <strong>RRP:</strong> <%= book.recommended_retail_price %>
     </p>
     <p>
-      Your price: <%= book.price %>
-    </p>
-    <p>
-      RRP: <%= book.recommended_retail_price %>
-    </p>
-    <p>
-      Categories: <%= book.category %>
+      <strong>Categories:</strong> <%= book.category %>
     </p>
     <p>
       <%= link_to 'View details', book, target: '_blank' %>
