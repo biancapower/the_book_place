@@ -14,10 +14,16 @@
       <%= book.title %>
     </p>
     <p>
+      <%= book.author %>
+    </p>
+    <p>
       Your price: <%= book.price %>
     </p>
     <p>
       RRP: <%= book.recommended_retail_price %>
+    </p>
+    <p>
+      Categories: <%= book.category %>
     </p>
     <p>
       <%= link_to 'View details', book, target: '_blank' %>

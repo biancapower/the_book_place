@@ -7,9 +7,11 @@
     <tr>
       <th>User</th>
       <th>Title</th>
+      <th>Author(s)</th>
       <th>Description</th>
       <th>Price</th>
       <th>Shipping cost</th>
+      <th>Categories</th>
       <!-- <th>Sold</th> -->
       <th>Recommended retail price</th>
       <th>Condition</th>
@@ -28,9 +30,11 @@
         <!-- <td><%= book.user %></td> -->
         <td><%= book.user.id %></td>
         <td><%= book.title %></td>
+        <td><%= book.author %></td>
         <td><%= book.description %></td>
         <td><%= book.price %></td>
         <td><%= book.shipping_cost %></td>
+        <td><%= book.category %></td>
         <!-- <td><%= book.sold %></td> -->
         <td><%= book.recommended_retail_price %></td>
         <td><%= book.condition %></td>

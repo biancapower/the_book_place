@@ -22,6 +22,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :author %>
+    <%= form.text_field :author, id: :book_author %>
+  </div>
+
+  <div class="field">
     <%= form.label :description %>
     <%= form.text_field :description, id: :book_description %>
   </div>
@@ -34,6 +39,11 @@
   <div class="field">
     <%= form.label :shipping_cost %>
     <%= form.number_field :shipping_cost, id: :book_shipping_cost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.text_field :category, id: :book_category %>
   </div>
 
   <!-- <div class="field">
