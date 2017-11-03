@@ -12,6 +12,7 @@
       <th>Street address</th>
       <th>Suburb</th>
       <th>Postcode</th>
+      <th>Bio</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,6 +27,7 @@
         <td><%= profile.street_address %></td>
         <td><%= profile.suburb %></td>
         <td><%= profile.postcode %></td>
+        <td><%= profile.bio %></td>
         <td><%= link_to 'Show', profile %></td>
         <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
         <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
