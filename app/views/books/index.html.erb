@@ -1,5 +1,32 @@
 <p id="notice"><%= notice %></p>
 
+<div class="container">
+  <% @books.each do |book| %>
+    <hr>
+    <h3>
+      <%= book.title %>
+    </h3>
+    <h5>
+      <i><%= book.author %></i>
+    </h5>
+    <p>
+      <strong>Your price:</strong> <%= book.price %>
+    </p>
+    <p>
+      <strong>RRP:</strong> <%= book.recommended_retail_price %>
+    </p>
+    <p>
+      <strong>Categories:</strong> <%= book.category %>
+    </p>
+    <p>
+      <%= link_to 'View details', book, target: '_blank' %>
+    </p>
+    <hr>
+  <% end %>
+</div>
+
+
+<!--
 <h1>Books</h1>
 
 <table>
@@ -12,7 +39,7 @@
       <th>Price</th>
       <th>Shipping cost</th>
       <th>Categories</th>
-      <!-- <th>Sold</th> -->
+
       <th>Recommended retail price</th>
       <th>Condition</th>
       <th>Format</th>
@@ -27,7 +54,7 @@
   <tbody>
     <% @books.each do |book| %>
       <tr>
-        <!-- <td><%= book.user %></td> -->
+
         <td><%= book.user.id %></td>
         <td><%= book.title %></td>
         <td><%= book.author %></td>
@@ -35,7 +62,7 @@
         <td><%= book.price %></td>
         <td><%= book.shipping_cost %></td>
         <td><%= book.category %></td>
-        <!-- <td><%= book.sold %></td> -->
+
         <td><%= book.recommended_retail_price %></td>
         <td><%= book.condition %></td>
         <td><%= book.format %></td>
@@ -54,3 +81,4 @@
 <br>
 
 <%= link_to 'New Book', new_book_path %>
+-->

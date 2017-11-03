@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :profiles
 
-  root 'static_pages#home'
+  root 'books#index'
 
   get 'profile', to: 'profiles#current'
 
