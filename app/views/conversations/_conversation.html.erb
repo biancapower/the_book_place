@@ -4,7 +4,7 @@
       <!-- FIXME: make this display username
       This displays email address: #{conversation.opposed_user(user).email}
       -->
-      <%= link_to "Messages", '', class: 'toggle-window' %>
+      <%= link_to "Conversation with #{conversation.opposed_user(user).profile.username}", '', class: 'toggle-window' %>
       <%= link_to "x", close_conversation_path(conversation), class: "btn btn-default btn-xs pull-right", remote: true, method: :post %>
     </div>
 
