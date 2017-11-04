@@ -1,4 +1,5 @@
-<%= form_with(model: book, local: true) do |form| %>
+
+<%= form_for @book, url: "#{book_path}", html: { multipart: true } do |form| %>
   <% if book.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
@@ -24,6 +25,11 @@
   <div class="field">
     <%= form.label :author %>
     <%= form.text_field :author, id: :book_author %>
+  </div>
+
+  <div class="field">
+    <%= form.label :book_image %>
+    <%= form.file_field :book_image %>
   </div>
 
   <div class="field">

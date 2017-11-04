@@ -10,6 +10,9 @@
       <i><%= book.author %></i>
     </h5>
     <p>
+      <%= image_tag book.book_image.url(:thumb) %>
+    </p>
+    <p>
       <strong>Your price:</strong> <%= book.price %>
     </p>
     <p>
