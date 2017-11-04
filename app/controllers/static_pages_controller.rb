@@ -9,6 +9,8 @@ class StaticPagesController < ApplicationController
   end
 
   def messages
+    @profiles = Profile.all
+
     session[:conversations] ||= []
 
     @users = User.all.where.not(id: current_user)

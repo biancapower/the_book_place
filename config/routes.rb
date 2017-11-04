@@ -21,4 +21,6 @@ Rails.application.routes.draw do
 
   get 'messages', to: 'static_pages#messages'
 
+  get 'messages/open', to: 'messages#create'
+
 end
