@@ -80,4 +80,5 @@
 </p>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', books_path %>
