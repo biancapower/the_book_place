@@ -1,5 +1,5 @@
 
-<%= form_for @book, url: "#{book_path}", html: { multipart: true } do |form| %>
+<%= form_for @book, url: "#{books_path}", html: { multipart: true } do |form| %>
   <% if book.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
