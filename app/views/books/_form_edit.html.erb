@@ -1,0 +1,98 @@
+
+<%= form_for @book, url: "#{book_path}", html: { multipart: true } do |form| %>
+  <% if book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- <div class="field">
+    <%#= form.label :seller_id %>
+    <%#= form.text_field :seller_id, id: :book_seller_id %>
+  </div> -->
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :book_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author %>
+    <%= form.text_field :author, id: :book_author %>
+  </div>
+
+  <div class="field">
+    <%= form.label :book_image %>
+    <%= form.file_field :book_image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :book_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price, id: :book_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shipping_cost %>
+    <%= form.number_field :shipping_cost, id: :book_shipping_cost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.text_field :category, id: :book_category %>
+  </div>
+
+  <!-- <div class="field">
+    <%#= form.label :sold %>
+    <%#= form.check_box :sold, id: :book_sold %>
+  </div> -->
+
+  <div class="field">
+    <%= form.label :recommended_retail_price %>
+    <%= form.number_field :recommended_retail_price, id: :book_recommended_retail_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :condition %>
+    <%= form.text_field :condition, id: :book_condition %>
+  </div>
+
+  <div class="field">
+    <%= form.label :format %>
+    <%= form.text_field :format, id: :book_format %>
+  </div>
+
+  <div class="field">
+    <%= form.label :publisher %>
+    <%= form.text_field :publisher, id: :book_publisher %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pages %>
+    <%= form.number_field :pages, id: :book_pages %>
+  </div>
+
+  <div class="field">
+    <%= form.label :isbn10 %>
+    <%= form.text_field :isbn10, id: :book_isbn10 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :isbn13 %>
+    <%= form.text_field :isbn13, id: :book_isbn13 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
