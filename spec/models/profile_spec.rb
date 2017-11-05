@@ -2,19 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Profile, type: :model do
 
-  it "is valid with username, first name, last name, street address, suburb, postcode, and bio" do
-    profile = Profile.new(
-      user_id: "1",
-      username: "read_lots",
-      first_name: "Joe",
-      last_name: "Bloggs",
-      street_address: "123 Main St",
-      suburb: "Blacktown",
-      postcode: "0129",
-      bio: "I love to read books :)"
-      )
-    expect(profile).to be_valid
-  end
+
 
   it "is invalid without a username" do
     profile = Profile.new(username: nil)
