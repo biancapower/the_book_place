@@ -23,4 +23,8 @@ Rails.application.routes.draw do
 
   get 'messages/open', to: 'messages#create'
 
+  get 'payment_method', to: 'users#payment'
+
+  post 'add_card', to: 'users#add_card'
+
 end

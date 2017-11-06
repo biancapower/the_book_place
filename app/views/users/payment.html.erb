@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-md-3">
+    <ul class="sidebar-list">
+      <li class="sidebar-item"><%= link_to "Payment Method", payment_method_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "Payout Method", payment_method_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "Notification Settings", payment_method_path, class: "sidebar-link" %></li>
+    </ul>
+  </div>
+
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">Payment Method</div>
+      <div class="panel-body">
+        <div class="container">
+
+          <div class="card" style="margin-bottom: 20px;"></div>
+
+          <%= form_tag("/add_card", method: "post", id: "add-card") do %>
+            <div class="row pull-center">
+              <div class="col-md-12">
+                <div class="well">
+
+                  <div class="row">
+                    <div class="col-md-8 form-group">
+                      <label>Card Number</label>
+                      <input type="text" name="number" class="form-control">
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>Expiry</label>
+                      <input type="text" placeholder="MM/YY" name="expiry" class="form-control">
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-8 form-group">
+                      <label>Name</label>
+                      <input type="text" name="name" class="form-control">
+                    </div>
+                    <div class="col-md-4 form-group">
+                      <label>CVV</label>
+                      <input type="text" name="cvv" class="form-control">
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12 text-right">
+                      <% if current_user.stripe_id.blank? %>
+                        <button class="btn btn-normal btn-block">Add Card</button>
+                      <% else %>
+                        <button class="btn btn-normal btn-block">Update Card</button>
+                    <% end %>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    var card = new Card({
+      form: '#add-card'
+      container: '.card'
+    })
+  });
+</script>
