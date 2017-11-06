@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
 
+  before_action :authenticate_user!, only: [:messages]
+
   def home
     @books = Book.all
   end
