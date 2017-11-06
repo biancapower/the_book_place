@@ -19,6 +19,16 @@
   <%= image_tag @book.book_image.url(:medium) %>
 </p>
 
+<!-- <form action="<%= thanks_path %>"  method="POST"> -->
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="<%= @book.title %>"
+          data-amount="<%= (@book.price + @book.shipping_cost) * 100 %>"
+          data-email="<%= current_user.email %>"
+          data-locale="auto">
+  </script>
+<!-- </form> -->
+
 <p>
   <strong>Description:</strong>
   <%= @book.description %>

@@ -30,4 +30,5 @@ class UsersController < ApplicationController
       flash[:alert] = e.message
       redirect_to payment_method_path
   end
+
 end
