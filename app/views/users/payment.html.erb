@@ -2,8 +2,8 @@
   <div class="col-md-3">
     <ul class="sidebar-list">
       <li class="sidebar-item"><%= link_to "Payment Method", payment_method_path, class: "sidebar-link" %></li>
-      <li class="sidebar-item"><%= link_to "Payout Method", payment_method_path, class: "sidebar-link" %></li>
-      <li class="sidebar-item"><%= link_to "Notification Settings", payment_method_path, class: "sidebar-link" %></li>
+      <!-- <li class="sidebar-item"><%= link_to "Payout Method", payment_method_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "Notification Settings", payment_method_path, class: "sidebar-link" %></li> -->
     </ul>
   </div>
 
@@ -48,7 +48,7 @@
                         <button class="btn btn-normal btn-block">Add Card</button>
                       <% else %>
                         <button class="btn btn-normal btn-block">Update Card</button>
-                    <% end %>
+                      <% end %>
                     </div>
                   </div>
 
@@ -64,6 +64,7 @@
 </div>
 
 <script>
+
   $(function() {
     var card = new Card({
       form: '#add-card'

@@ -14,8 +14,9 @@
 //= require turbolinks
 //= require card
 //= require_tree .
+//= require jquery
 //= require jquery3
-// = require jquery_ujs
+//= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
 
