@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Profile, type: :model do
 
-
-
   it "is invalid without a username" do
     profile = Profile.new(username: nil)
     profile.valid?
