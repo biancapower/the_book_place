@@ -5,9 +5,9 @@
   <%#= @profile.user %>
 </p> -->
 
-<p>
-  <%= image_tag @profile.avatar.url(:thumb) %>
-</p>
+<div class="image-cropper">
+  <%= image_tag @profile.avatar.url(:thumb), class: "profile-pic" %>
+</div>
 
 <p>
   <strong>Username:</strong>
@@ -47,15 +47,13 @@
 <% if @profile.user.id == current_user.id %>
   <%= link_to 'Edit', edit_profile_path(@profile) %> |
   <%= link_to 'Back', profiles_path %>
-<% end %>  
+<% end %>
 
-<hr>
-<hr>
 
-<%= link_to "Message #{@profile.username}", messages_path, target: "_blank" %>
+<% if @profile.user.id != current_user.id %>
+  <%= link_to "Message #{@profile.username}", messages_path, target: "_blank" %>
+<% end %>
 
-<hr>
-<hr>
 
 <!-- ################################## -->
 <h3><%= @profile.username %>'s books</h3>
@@ -63,7 +61,6 @@
 
 <% @books.each do |book| %>
   <% if book.user.id == @profile.user.id %>
-    <hr>
     <p>
       <%= book.title %>
     </p>
@@ -76,6 +73,5 @@
     <p>
       <%= link_to 'View details', book, target: '_blank' %>
     </p>
-    <hr>
   <% end %>
 <% end %>
