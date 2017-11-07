@@ -79,6 +79,7 @@
   <%= @book.isbn13 %>
 </p>
 
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', books_path %>
+<% if @book.user.id == current_user.id %>
+  <%= link_to 'Edit', edit_book_path(@book) %> |
+  <%= link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
