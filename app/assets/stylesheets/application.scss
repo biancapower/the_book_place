@@ -1,1 +1,68 @@
- @import "bootstrap";
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Gentium+Book+Basic|Open+Sans');
+
+// font-family: 'Gentium Book Basic', serif;
+// font-family: 'Open Sans', sans-serif;
+
+* {
+ box-sizing: border-box;
+}
+
+body {
+  background-color: #E5E5E5;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.bg-white {
+  background-color: #FFF;
+}
+
+.bg-green {
+  background-color: #49DA90;
+}
+
+.font-white {
+  color: white;
+}
+
+.btn-blue {
+  background-color: #00BFD8;
+}
+
+.font-heading {
+  font-family: 'Gentium Book Basic', serif;
+}
+
+.font-body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.border-grey {
+  margin: 10% auto;
+  padding: 5%;
+  border: 1px solid lightgrey;
+}
+
+/********** NAVBAR **********/
+
+.logo{
+  max-width: 50px;
+}
+
+.navbar {
+  background-color: #611D59;
+}
+
+/********** HOMEPAGE **********/
+
+.book-overview-image {
+  max-width: 90%;
+}
+
+.your-price {
+  font-size: 1.2em;
+}
+
+.rrp {
+  text-decoration: line-through;
+}
