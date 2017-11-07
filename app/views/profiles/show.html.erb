@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<!-- <p>
-  <strong>User:</strong>
-  <%#= @profile.user %>
-</p> -->
-
 <div class="image-cropper">
   <%= image_tag @profile.avatar.url(:thumb), class: "profile-pic" %>
 </div>
+
+
+<%= link_to image_tag('stripe_connect_button.png'), "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_BiAZKOKzQ1VXHUgNOQtMpAqYmaH1KzGu&scope=read_write" %>
+
+<!-- FIXME: use this instead of link: user_omniauth_authorize_path(:stripe_connect) -->
 
 <p>
   <strong>Username:</strong>
