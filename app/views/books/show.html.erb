@@ -21,6 +21,9 @@
 
 <% if @book.user.id != current_user.id %>
   <%= form_tag charges_path do %>
+
+    <%= hidden_field_tag "book_id", @book.id %>
+
     <article>
       <% if flash[:error].present? %>
         <div id="error_explanation">
@@ -28,6 +31,7 @@
         </div>
       <% end %>
     </article>
+
 
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
