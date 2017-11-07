@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
+  get 'charges/new'
+
+  get 'charges/create'
+
   resources :books
   devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
   # devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :profiles
+
+  resources :charges, only: [:new, :create]
 
   resources :conversations, only: [:create] do
     member do
@@ -22,5 +28,7 @@ Rails.application.routes.draw do
   get 'messages', to: 'static_pages#messages'
 
   get 'messages/open', to: 'messages#create'
+
+  get 'thanks', to: 'charges#thanks'
 
 end
