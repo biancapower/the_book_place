@@ -37,6 +37,10 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+.font-medium {
+  font-size: 1.5em;
+}
+
 .border-grey {
   margin: 10% auto;
   padding: 5%;
@@ -69,8 +73,8 @@ body {
 
 /********** PROFILE **********/
 .image-cropper {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     position: relative;
     overflow: hidden;
     border-radius: 50%;

@@ -1,18 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<div class="image-cropper">
-  <%= image_tag @profile.avatar.url(:thumb), class: "profile-pic" %>
+
+<div class="row mt-5">
+  <div class="col d-flex justify-content-center">
+    <div class="image-cropper">
+      <%= image_tag @profile.avatar.url(:medium), class: "profile-pic" %>
+    </div>
+  </div>
 </div>
 
 
-<%= link_to image_tag('stripe_connect_button.png'), "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_BiAZKOKzQ1VXHUgNOQtMpAqYmaH1KzGu&scope=read_write" %>
+<div class="row pt-3">
+  <div class="col d-flex justify-content-center font-heading font-medium">
+      <%= @profile.username %>
+  </div>
+</div>
 
-<!-- FIXME: use this instead of link: user_omniauth_authorize_path(:stripe_connect) -->
-
-<p>
-  <strong>Username:</strong>
-  <%= @profile.username %>
-</p>
+<!-- if current user show "connect with stripe button, otherwise show "message reader" button -->
+<div class="row mt-4">
+  <div class="col d-flex justify-content-center">
+    <% if @profile.user.id == current_user.id %>
+      <%= link_to image_tag('stripe_connect_button.png'), "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_BiAZKOKzQ1VXHUgNOQtMpAqYmaH1KzGu&scope=read_write" %>
+    <% end %>
+    <!-- FIXME: use this instead of link: user_omniauth_authorize_path(:stripe_connect) -->
+  </div>
+</div>
 
 <p>
   <strong>First name:</strong>
