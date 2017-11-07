@@ -19,6 +19,7 @@
   <%= image_tag @book.book_image.url(:medium) %>
 </p>
 
+<!-- FIXME: make this work when logged out also (i.e. there is no current_user) -->
 <% if @book.user.id != current_user.id %>
   <%= form_tag charges_path do %>
 
@@ -103,6 +104,7 @@
   <%= @book.isbn13 %>
 </p>
 
+<!-- FIXME: make this work when logged out also (i.e. there is no current_user) -->
 <% if @book.user.id == current_user.id %>
   <%= link_to 'Edit', edit_book_path(@book) %> |
   <%= link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
