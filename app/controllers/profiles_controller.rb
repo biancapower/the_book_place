@@ -84,8 +84,8 @@ class ProfilesController < ApplicationController
                     grant_type: "authorization_code"
                   })
 
-    @user.stripe_id = response.parsed_response['stripe_user_id']
-    @user.save
+    current_user.stripe_id = response.parsed_response['stripe_user_id']
+    current_user.save
 
   end
 
