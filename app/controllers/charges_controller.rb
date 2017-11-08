@@ -8,6 +8,7 @@ class ChargesController < ApplicationController
 
     # puts "---- #{@book.inspect}"
     @amount = (@book.price + @book.shipping_cost).to_i * 100
+    application_fee = (@amount * 0.05).to_i     # 5%
 
     customer = Stripe::Customer.create(
       email: params[:stripeEmail],
@@ -19,11 +20,12 @@ class ChargesController < ApplicationController
       customer: customer.id,
       amount: @amount,
       description: @book.title,
-      currency: 'aud'
+      currency: 'aud',
+      capture: true
     }
 
     charge_params[:destination] = User.find(@book.user_id).stripe_id
-    charge_params[:application_fee] = 200
+    charge_params[:application_fee] = application_fee
 
     Stripe::Charge.create(charge_params) # return a Stripe::Charge object
 
