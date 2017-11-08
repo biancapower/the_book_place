@@ -14,12 +14,20 @@ class ChargesController < ApplicationController
       source: params[:stripeToken]
     )
 
-    charge = Stripe::Charge.create(
+    # charge
+    charge_params = {
       customer: customer.id,
       amount: @amount,
       description: @book.title,
       currency: 'aud'
-    )
+    }
+
+    charge_params[:destination] = User.find(@book.user_id).stripe_id
+    charge_params[:application_fee] = 200
+
+    Stripe::Charge.create(charge_params) # return a Stripe::Charge object
+
+
 
     rescue Stripe::CardError => e
     flash[:error] = e.message
@@ -34,3 +42,27 @@ class ChargesController < ApplicationController
     @book = Book.find(params[:book_id])
   end
 end
+
+
+
+# charge = Stripe::Charge.create(
+#   customer: customer.id,
+#   amount: @amount,
+#   description: @book.title,
+#   currency: 'aud'
+# )
+#
+#
+# def create_order_charge(order)
+#   charge_params = {
+#     customer: customer.id,
+#     amount: @amount,
+#     description: @book.title,
+#     currency: 'aud'
+#   }
+#
+#   charge_params[:destination] = @book.user.stripe_user_id
+#   charge_params[:application_fee] = 200
+#
+# Stripe::Charge.create(charge_params) # return a Stripe::Charge object
+# end
