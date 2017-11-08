@@ -76,6 +76,19 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def connect_stripe
+
+    response = HTTParty.post("https://connect.stripe.com/oauth/token",
+        :query => { client_secret: ENV['STRIPE_SECRET_KEY'],
+                    code: params[:code],
+                    grant_type: "authorization_code"
+                  })
+
+    @user.stripe_id = response.parsed_response['stripe_user_id']
+    @user.save
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile

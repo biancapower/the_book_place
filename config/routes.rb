@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get 'profile', to: 'profiles#current'
 
+  get 'profile/connect_stripe', to: 'profiles#connect_stripe'
+
   get 'readers_books', to: 'static_pages#readers_books'
 
   get 'messages', to: 'static_pages#messages'
