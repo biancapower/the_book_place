@@ -1,89 +1,89 @@
 <p id="notice"><%= notice %></p>
 
+<div class="container">
+  <div class="row mt-5">
+    <div class="col d-flex justify-content-center">
+      <div class="image-cropper">
+        <%= image_tag @profile.avatar.url(:medium), class: "profile-pic" %>
+      </div>
+    </div>
+  </div>
 
-<div class="row mt-5">
-  <div class="col d-flex justify-content-center">
-    <div class="image-cropper">
-      <%= image_tag @profile.avatar.url(:medium), class: "profile-pic" %>
+
+  <div class="row pt-3">
+    <div class="col d-flex justify-content-center font-heading font-medium">
+        <%= @profile.username %>
+    </div>
+  </div>
+
+  <!-- if current user show "connect with stripe button, otherwise show "message reader" button -->
+  <div class="row mt-4 mb-5">
+    <div class="col d-flex justify-content-center">
+      <% if @profile.user.id == current_user.id %>
+        <%= link_to image_tag('stripe_connect_button.png'), "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_BiAZKOKzQ1VXHUgNOQtMpAqYmaH1KzGu&scope=read_write" %>
+        <% elsif @profile.user.id != current_user.id %>
+          <%= link_to "Message #{@profile.username}", messages_path, target: "_blank", class: "btn-blue btn font-white" %>
+      <% end %>
+      <!-- FIXME: use this instead of link: user_omniauth_authorize_path(:stripe_connect) -->
+    </div>
+  </div>
+
+  <div class="container bg-white border-grey p-4">
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <div class="row">
+          <div class="col text-center">
+            <h4 class="font-weight-bold font-heading mb-3">Name</h4>
+            <p class="font-small"><%= @profile.first_name + " " + @profile.last_name %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <div class="row">
+          <div class="col text-center pt-3">
+            <h4 class="font-weight-bold font-heading mb-3">Bio</h4>
+            <p class="font-small"><%= @profile.bio %></p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-
-<div class="row pt-3">
-  <div class="col d-flex justify-content-center font-heading font-medium">
-      <%= @profile.username %>
-  </div>
-</div>
-
-<!-- if current user show "connect with stripe button, otherwise show "message reader" button -->
-<div class="row mt-4">
-  <div class="col d-flex justify-content-center">
-    <% if @profile.user.id == current_user.id %>
-      <%= link_to image_tag('stripe_connect_button.png'), "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=ca_BiAZKOKzQ1VXHUgNOQtMpAqYmaH1KzGu&scope=read_write" %>
-    <% end %>
-    <!-- FIXME: use this instead of link: user_omniauth_authorize_path(:stripe_connect) -->
-  </div>
-</div>
-
-<p>
-  <strong>First name:</strong>
-  <%= @profile.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @profile.last_name %>
-</p>
-
-<p>
-  <strong>Street address:</strong>
-  <%= @profile.street_address %>
-</p>
-
-<p>
-  <strong>Suburb:</strong>
-  <%= @profile.suburb %>
-</p>
-
-<p>
-  <strong>Postcode:</strong>
-  <%= @profile.postcode %>
-</p>
-
-<p>
-  <strong>Bio:</strong>
-  <%= @profile.bio %>
-</p>
-
+<!-- ################# BOOKS ################# -->
 <% if @profile.user.id == current_user.id %>
-  <%= link_to 'Edit', edit_profile_path(@profile) %> |
-  <%= link_to 'Back', profiles_path %>
+  <h3 class="font-heading text-center">My Books</h3>
+  <% else %>
+  <h3 class="font-heading text-center"><%= @profile.username %>'s Books</h3>
 <% end %>
-
-
-<% if @profile.user.id != current_user.id %>
-  <%= link_to "Message #{@profile.username}", messages_path, target: "_blank" %>
-<% end %>
-
-
-<!-- ################################## -->
-<h3><%= @profile.username %>'s books</h3>
-
 
 <% @books.each do |book| %>
   <% if book.user.id == @profile.user.id %>
-    <p>
-      <%= book.title %>
-    </p>
-    <p>
-      Your price: <%= book.price %>
-    </p>
-    <p>
-      RRP: <%= book.recommended_retail_price %>
-    </p>
-    <p>
-      <%= link_to 'View details', book, target: '_blank' %>
-    </p>
+    <div class="container bg-white border-grey p-4">
+      <div class="col">
+        <div class="row">
+          <div class="col-6">
+            <%= image_tag book.book_image.url(:medium), class: "book-overview-image" %>
+          </div>
+          <div class="col-6 text-center">
+            <h4 class="font-heading pt-2">
+              <%= book.title %>
+            </h4>
+            <h6 class="mt-4 font-heading">
+              <%= book.author %>
+            </h6>
+
+            <%= link_to "View Details", book, target: "_blank", class: "btn-blue btn font-white mt-5", :method => :get %>
+
+          </div>
+        </div>
+        <div class="row bg-green pt-2 pb-2 mt-4 font-white">
+          <div class="col rrp"><strong>RRP:</strong> $<%= book.recommended_retail_price %>.00</div>
+          <div class="col your-price"><strong>Your price:</strong> $<%= book.price %>.00</div>
+        </div>
+      </div>
+    </div>
   <% end %>
 <% end %>
