@@ -1,59 +1,100 @@
-<%#= form_with(model: profile, local: true) do |form| %>
-<%= form_for @profile, url: "#{profile_path}", html: { multipart: true } do |form| %>
-  <% if profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+<div class="container">
+  <div class="row bg-white p-4">
+    <div class="col">
 
-      <ul>
-      <% profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <%= form_for @profile, url: "#{profile_path}", html: { multipart: true } do |form| %>
+        <% if profile.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+            <ul>
+            <% profile.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+
+        <div class="field row">
+          <div class="col-3">
+            <%= form.label :username, class: "pt-1 font-weight-bold" %>
+          </div>
+          <div class="col-8">
+            <%= form.text_field :username, id: :profile_username, class: "width-large p-1 rounded" %>
+          </div>
+        </div>
+
+        <div class="field row mt-3">
+          <div class="col-3">
+            <%= form.label :first_name, class: "pt-1 font-weight-bold" %>
+          </div>
+          <div class="col-8">
+            <%= form.text_field :first_name, id: :profile_first_name, class: "width-large p-1 rounded" %>
+          </div>
+        </div>
+
+        <div class="field row mt-3">
+          <div class="col-3">
+            <%= form.label :last_name, class: "pt-1 font-weight-bold" %>
+          </div>
+          <div class="col-8">
+            <%= form.text_field :last_name, id: :profile_last_name, class: "width-large p-1 rounded" %>
+          </div>
+        </div>
+
+        <div class="field row mt-3">
+          <div class="col-3">
+            <%= form.label :street_address, class: "pt-1 font-weight-bold" %>
+          </div>
+          <div class="col-8">
+            <%= form.text_field :street_address, id: :profile_street_address, class: "width-large p-1 rounded" %>
+          </div>
+        </div>
+
+        <div class="field row mt-3">
+          <div class="col-3">
+            <%= form.label :suburb, class: "pt-1 font-weight-bold" %>
+          </div>
+          <div class="col-8">
+            <%= form.text_field :suburb, id: :profile_suburb, class: "width-large p-1 rounded" %>
+          </div>
+        </div>
+
+        <div class="field row mt-3">
+          <div class="col-3">
+            <%= form.label :postcode, class: "pt-1 font-weight-bold" %>
+          </div>
+          <div class="col-8">
+            <%= form.text_field :postcode, id: :profile_postcode, class: "width-large p-1 rounded" %>
+          </div>
+        </div>
+
+        <div class="field row mt-3">
+          <div class="col-3">
+            <%= form.label :bio, class: "pt-1 font-weight-bold" %>
+          </div>
+          <div class="col-8">
+            <%= form.text_field :bio, id: :profile_bio, class: "width-large p-1 rounded" %>
+          </div>
+        </div mt-3>
+
+        <div class="field row mt-3">
+          <div class="col-3">
+            <%= form.label :avatar, class: "pt-1 font-weight-bold" %>
+          </div>
+          <div class="col-8">
+            <%= form.file_field :avatar, class: "width-large p-1 rounded" %>
+          </div>
+        </div>
+
+        <div class="actions row mt-5 mb-3">
+          <div class="col d-flex justify-content-center">
+            <%= form.submit %>
+          </div>
+        </div>
       <% end %>
-      </ul>
+
     </div>
-  <% end %>
-
-
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username, id: :profile_username %>
   </div>
-
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name, id: :profile_first_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, id: :profile_last_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :street_address %>
-    <%= form.text_field :street_address, id: :profile_street_address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :suburb %>
-    <%= form.text_field :suburb, id: :profile_suburb %>
-  </div>
-
-  <div class="field">
-    <%= form.label :postcode %>
-    <%= form.text_field :postcode, id: :profile_postcode %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bio %>
-    <%= form.text_field :bio, id: :profile_bio %>
-  </div>
-
-  <div class="field">
-    <%= form.label :avatar %>
-    <%= form.file_field :avatar %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
