@@ -1,111 +1,163 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Seller:</strong>
-  <%= link_to @book.user.profile.username,  @book.user.profile, target: '_blank' %>
-</p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
 
-<p>
-  <strong>Author(s):</strong>
-  <%= @book.author %>
-</p>
+      <div class="row bg-white p-4 mt-5 mr-2 ml-2">
+        <div class="col">
+          <div class="row pt-3">
+            <div class="col-6">
+              <%= image_tag @book.book_image.url(:medium), class: "book-overview-image" %>
+            </div>
+            <div class="col-6 text-center">
+              <h4 class="font-heading pt-2">
+                <%= @book.title %>
+              </h4>
+              <h6 class="mt-4 font-heading">
+                <%= @book.author %>
+              </h6>
 
-<p>
-  <%= image_tag @book.book_image.url(:medium) %>
-</p>
+              <p class="mt-5">
+                <!-- FIXME: make this work when logged out also (i.e. there is no current_user) -->
+                <% if @book.user.id != current_user.id %>
+                  <%= form_tag charges_path do %>
 
-<!-- FIXME: make this work when logged out also (i.e. there is no current_user) -->
-<% if @book.user.id != current_user.id %>
-  <%= form_tag charges_path do %>
+                    <%= hidden_field_tag "book_id", @book.id %>
 
-    <%= hidden_field_tag "book_id", @book.id %>
+                    <article>
+                      <% if flash[:error].present? %>
+                        <div id="error_explanation">
+                          <p><%= flash[:error] %></p>
+                        </div>
+                      <% end %>
+                    </article>
 
-    <article>
-      <% if flash[:error].present? %>
-        <div id="error_explanation">
-          <p><%= flash[:error] %></p>
+
+                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                            data-description="<%= @book.title %>"
+                            data-amount="<%= (@book.price + @book.shipping_cost) * 100 %>"
+                            data-email="<%= current_user.email %>"
+                            data-locale="auto">
+                    </script>
+                  <% end %>
+                <% end %>
+              </p>
+
+              <div class="row bg-green pt-2 pb-2 mt-4 font-white">
+                <div class="col">
+                  <div class="row">
+                    <div class="col your-price"><strong>Your price:</strong> $<%= @book.price %>.00</div>
+                  </div>
+                  <div class="row pt-2">
+                    <div class="col">
+                      + postage: $<%= @book.shipping_cost %>.00
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <p>
+                <strong>Seller:</strong>
+                <%= link_to @book.user.profile.username,  @book.user.profile, target: '_blank' %>
+              </p>
+            </div>
+            <div class="col">
+              <p>
+                <strong>Condition:</strong>
+                <%= @book.condition %>
+              </p>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col">
+              <p>
+                <strong>Categories:</strong>
+                <%= @book.category %>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <div class="row bg-white p-4 mt-5 mr-2 ml-2">
+        <div class="col">
+          <p>
+            <p><strong>Description</strong></p>
+            <%= @book.description %>
+          </p>
+        </div>
+      </div>
+
+
+
+      <div class="row bg-white p-4 mt-5 mr-2 ml-2">
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              <p><strong>Format:</strong></p>
+            </div>
+            <div class="col">
+              <p><%= @book.format %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p><strong>Pages:</strong></p>
+            </div>
+            <div class="col">
+              <p><%= @book.pages %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p><strong>Publisher:</strong></p>
+            </div>
+            <div class="col">
+              <p><%= @book.publisher %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p><strong>Isbn10:</strong></p>
+            </div>
+            <div class="col">
+              <p><%= @book.isbn10 %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p><strong>Isbn13:</strong></p>
+            </div>
+            <div class="col">
+              <p><%= @book.isbn13 %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <!-- FIXME: make this work when logged out also (i.e. there is no current_user) -->
+      <% if @book.user.id == current_user.id %>
+        <div class="row m-4">
+          <div class="col text-center">
+            <%= link_to 'Edit', edit_book_path(@book) %> |
+            <%= link_to 'Delete', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
         </div>
       <% end %>
-    </article>
-
-
-    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-            data-description="<%= @book.title %>"
-            data-amount="<%= (@book.price + @book.shipping_cost) * 100 %>"
-            data-email="<%= current_user.email %>"
-            data-locale="auto">
-    </script>
-  <% end %>
-<% end %>
-
-<p>
-  <strong>Description:</strong>
-  <%= @book.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @book.price %>
-</p>
-
-<p>
-  <strong>Shipping cost:</strong>
-  <%= @book.shipping_cost %>
-</p>
-
-<p>
-  <strong>Categories:</strong>
-  <%= @book.category %>
-</p>
-
-<!-- <p>
-  <strong>Sold:</strong>
-  <%#= @book.sold %>
-</p> -->
-
-<p>
-  <strong>Recommended retail price:</strong>
-  <%= @book.recommended_retail_price %>
-</p>
-
-<p>
-  <strong>Condition:</strong>
-  <%= @book.condition %>
-</p>
-
-<p>
-  <strong>Format:</strong>
-  <%= @book.format %>
-</p>
-
-<p>
-  <strong>Publisher:</strong>
-  <%= @book.publisher %>
-</p>
-
-<p>
-  <strong>Pages:</strong>
-  <%= @book.pages %>
-</p>
-
-<p>
-  <strong>Isbn10:</strong>
-  <%= @book.isbn10 %>
-</p>
-
-<p>
-  <strong>Isbn13:</strong>
-  <%= @book.isbn13 %>
-</p>
-
-<!-- FIXME: make this work when logged out also (i.e. there is no current_user) -->
-<% if @book.user.id == current_user.id %>
-  <%= link_to 'Edit', edit_book_path(@book) %> |
-  <%= link_to 'Destroy', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+    </div>
+  </div>
+</div>
