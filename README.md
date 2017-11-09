@@ -17,7 +17,7 @@ This statement is justified by answering the following questions:
 
 As outlined below, the buying and selling of preloved books meet needs categorised within Maslow's Hierarchy as **safety**, **esteem**, and **self-actualisation**
 
-![Maslow's Hierarchy of Needs][/readme_resources/maslow.png]
+![Maslow's Hierarchy of Needs](/readme_resources/maslow.png)
 
 
 Fact 1: Many people have books lying around at home that they want to get rid of.
@@ -265,7 +265,7 @@ Preliminary user stories were collected in Trello, with more detailed user stori
 The original workflow was conceptualised in the diagram below. Some minor alterations were made during development as needed. These will be reflected in a future version of this diagram.
 
 
-![workflow](/readme_resources/TheBookPlace_workflow_diagram.png)
+![workflow](/readme_resources/workflow_diagram.png)
 
 ## Style Guide
 
