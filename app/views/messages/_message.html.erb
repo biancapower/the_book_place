@@ -1,7 +1,32 @@
-<li>
-  <div class="row">
-    <div class="<%= user.id == message.user_id ? 'message-sent' : 'message-received' %>">
-      <%= message.body %>
+<div class="container">
+
+  <% if message.user.id == current_user.id %>
+    <div class="row d-flex flex-row">
+  <% else %>
+    <div class="row d-flex flex-row-reverse">
+  <% end %>
+
+      <% if message.user.id == current_user.id %>
+        <div class="message-from-me <%= user.id == message.user_id ? 'message-sent' : 'message-received' %>" id="conversation-list-item">
+          <span class="col message-sender-username">
+            <%= message.user.profile.username %>
+          </span>
+          <span class="col message-body">
+            <%= message.body %>
+          </span>
+      <% else %>
+        <div class="message-from-other <%= user.id == message.user_id ? 'message-sent' : 'message-received' %>" id="conversation-list-item">
+          <span class="col message-body">
+            <%= message.body %>
+          </span>
+          <span class="col message-sender-username">
+            <%= message.user.profile.username %>
+          </span>
+      <% end %>
+        </div>
+
+
+
+
     </div>
-  </div>
-</li>
+</div>

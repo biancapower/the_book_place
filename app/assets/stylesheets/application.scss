@@ -7,6 +7,7 @@
 
 * {
  box-sizing: border-box;
+ list-style: none;
 }
 
 .width-large {
@@ -96,4 +97,40 @@ body {
   margin-left: -25%; //centers the image
   height: 100%;
   width: auto;
+}
+
+/********** MESSAGES **********/
+
+#profile-chat-list-item {
+  padding: 5px;
+  margin: 20px;
+}
+
+#profile-chat-list-item, a {
+  color: #611D59;
+}
+
+#conversation-list-item {
+  margin: 20px;
+  padding: 1em 2em;
+  border-radius: 10px;
+}
+
+.message-from-me {
+  background-color: #00BFD8;
+  color: white;
+}
+
+.message-from-other {
+  background-color: #49DA90;
+  color: white;
+}
+
+.message-sender-username {
+  font-size: 0.7em;
+  color: black;
+}
+
+.message-body {
+
 }

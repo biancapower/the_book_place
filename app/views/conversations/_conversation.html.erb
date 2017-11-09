@@ -1,7 +1,7 @@
-<li>
-  <div class="panel panel-default" data-conversation-id="<%= conversation.id %>">
+<div class="bg-white container p-4 mt-5">
+  <div class="panel panel-default bg-white p-3" data-conversation-id="<%= conversation.id %>">
     <div class="panel-heading">
-      <!-- FIXME: make this display username
+      <!--
       This displays email address: #{conversation.opposed_user(user).email}
       -->
       <%= link_to "Conversation with #{conversation.opposed_user(user).profile.username}", '', class: 'toggle-window' %>
@@ -10,9 +10,9 @@
 
     <div class="panel-body" style="display: none;">
       <div class="messages-list">
-        <ul>
+        <div>
           <%= render 'conversations/conversation_content', messages: conversation.messages, user: user %>
-        </ul>
+        </div>
       </div>
       <%= form_for [conversation, conversation.messages.new], remote: true do |f| %>
         <%= f.hidden_field :user_id, value: user.id %>
@@ -21,4 +21,4 @@
       <% end %>
     </div>
   </div>
-</li>
+</div>
