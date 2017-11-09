@@ -20,8 +20,8 @@
               </h6>
 
               <p class="mt-5">
-                <!-- FIXME: make this work when logged out also (i.e. there is no current_user) -->
-                <% if @book.user.id != current_user.id %>
+                <!-- FIXME: buy button should force signin before buy) -->
+                <% if (!user_signed_in?) || (@book.user.id != current_user.id) %>
                   <%= form_tag charges_path do %>
 
                     <%= hidden_field_tag "book_id", @book.id %>
@@ -39,7 +39,9 @@
                             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
                             data-description="<%= @book.title %>"
                             data-amount="<%= (@book.price + @book.shipping_cost) * 100 %>"
-                            data-email="<%= current_user.email %>"
+                            <% if user_signed_in? %>
+                              data-email="<%= current_user.email %>"
+                            <% end %>
                             data-locale="auto">
                     </script>
                   <% end %>
@@ -149,14 +151,15 @@
 
 
 
-      <!-- FIXME: make this work when logged out also (i.e. there is no current_user) -->
-      <% if @book.user.id == current_user.id %>
-        <div class="row m-4">
-          <div class="col text-center">
-            <%= link_to 'Edit', edit_book_path(@book) %> |
-            <%= link_to 'Delete', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% if user_signed_in? %>
+        <% if @book.user.id == current_user.id %>
+          <div class="row m-4">
+            <div class="col text-center">
+              <%= link_to 'Edit', edit_book_path(@book) %> |
+              <%= link_to 'Delete', @book, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>
