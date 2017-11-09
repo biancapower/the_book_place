@@ -1,5 +1,22 @@
 # The Book Place
 
+**Table of Contents**
+  * [Problem Definition and Solution](#problem-definition-and-solution)
+    + [Problem](#problem)
+      - [Why is there a need for selling and buying preloved books?](#why-is-there-a-need-for-selling-and-buying-preloved-books-)
+      - [Why online?](#why-online-)
+      - [Why within Australia?](#why-within-australia-)
+      - [What's wrong with the sites that already exist?](#what-s-wrong-with-the-sites-that-already-exist-)
+    + [Solution](#solution)
+  * [User Stories](#user-stories)
+    + [Preliminary User Stories](#preliminary-user-stories)
+    + [Detailed User Stories](#detailed-user-stories)
+  * [Workflow](#workflow)
+  * [Style Guide](#style-guide)
+  * [Wireframes](#wireframes)
+  * [ERD](#erd)
+  * [Trello](#trello)
+
 ## Problem Definition and Solution
 
 ### Problem
