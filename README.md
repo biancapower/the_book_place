@@ -332,3 +332,8 @@ After revisions necessary for creation of a MVP, the current ERD is as below.
 Trello was used from the beginning of this project to track ideas and tasks, as well as completion dates.
 
 See this project's [Trello board](https://trello.com/b/UHhZI3Xi/online-book-store) for details.
+
+A snapshot at one moment in time is provided below.
+
+![trello](/readme_resources/trello_snapshot_1.png)
+![trello](/readme_resources/trello_snapshot_2.png)
