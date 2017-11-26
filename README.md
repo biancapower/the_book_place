@@ -1,5 +1,9 @@
 # The Book Place
 
+Completed as a major assessment in [Coder Academy's](https://coderacademy.edu.au/) Fast Track Bootcamp.
+
+View live: https://thebookplace.herokuapp.com/
+
 **Table of Contents**
   * [Problem Definition and Solution](#problem-definition-and-solution)
     + [Problem](#problem)
